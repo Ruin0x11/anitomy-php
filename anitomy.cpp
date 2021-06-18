@@ -38,6 +38,9 @@
 	ZEND_PARSE_PARAMETERS_START(0, 0) \
 	ZEND_PARSE_PARAMETERS_END()
 #endif
+#ifndef RETURN_THROWS
+#define RETURN_THROWS() do { ZEND_ASSERT(EG(exception)); (void) return_value; return; } while (0)
+#endif
 
 const char* categoryToString(anitomy::ElementCategory category)
 {
