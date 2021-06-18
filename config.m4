@@ -6,7 +6,6 @@ PHP_ARG_ENABLE([anitomy],
 
 if test "$PHP_ANITOMY" != "no"; then
   PHP_REQUIRE_CXX()
-  PHP_CXX_COMPILE_STDCXX(11, mandatory, PHP_INTL_STDCXX)
 
   CXXFLAGS="-g3 -O2 -Wall -Wno-write-strings -fno-strict-aliasing"
   PHP_SUBST(CXXFLAGS)

@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [ develop, master ]
+  pull_request:
+    branches: [ develop, master ]
+
+jobs:
+  run:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: ['ubuntu-latest', 'macos-latest']
+        php-versions: ['7.3', '7.4', '8.1']
+        phpunit-versions: ['latest']
+        include:
+        - operating-system: 'ubuntu-latest'
+          php-versions: '7.2'
+          phpunit-versions: '8.5.13'
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+        extensions: mbstring, intl
+        ini-values: post_max_size=256M, max_execution_time=180
+        coverage: xdebug
+        tools: php-cs-fixer, phpunit:${{ matrix.phpunit-versions }}
+
+    - name: Build
+      run: |
+        set -e
+        phpize
+        ./configure
+        make
+
+    - name: Test
+      run: |
+        set -e
+        TEST_PHP_ARGS="-q" make test
