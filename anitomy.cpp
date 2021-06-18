@@ -32,6 +32,13 @@
 #include "anitomy/anitomy/options.h"
 #include "anitomy/anitomy/string.h"
 
+/* For compatibility with older PHP versions */
+#ifndef ZEND_PARSE_PARAMETERS_NONE
+#define ZEND_PARSE_PARAMETERS_NONE() \
+	ZEND_PARSE_PARAMETERS_START(0, 0) \
+	ZEND_PARSE_PARAMETERS_END()
+#endif
+
 const char* categoryToString(anitomy::ElementCategory category)
 {
   switch (category) {
