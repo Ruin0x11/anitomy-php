@@ -1,12 +1,10 @@
 {
     "name": "Ruin0x11/anitomy",
     "type": "library",
+    "version": "0.1.0",
     "description": "PHP bindings to anitomy",
-    "keywords": [
-        "php",
-        "extensions",
-        "parser"
-    ],
+    "keywords": ["php", "extensions", "parser"],
+    "time": "2021-06-18",
     "homepage": "https://github.com/Ruin0x11/anitomy",
     "license": "MIT",
     "authors": [
@@ -15,10 +13,6 @@
             "email": "nonbirithm@fastmail.com"
         }
     ],
-    "support": {
-        "email": "nonbirithm@fastmail.com",
-        "wiki": "https://github.com/Ruin0x11/anitomy/blob/master/README.md"
-    },
     "require": {
         "php": ">=5.4"
     },
