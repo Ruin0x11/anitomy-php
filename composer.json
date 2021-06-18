@@ -17,6 +17,6 @@
         "php": ">=5.4"
     },
     "replace": {
-        "Ruin0x11/anitomy": "self.version"
+        "ruin0x11/anitomy": "self.version"
     }
 }
