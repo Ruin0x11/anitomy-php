@@ -14,7 +14,7 @@ $ret = anitomy_parse("[Kamigami] Psycho-Pass - 06 [1280x720 x264 AAC Sub(CH,JP)]
 var_dump($ret);
 ?>
 --EXPECT--
-array(8) {
+array(9) {
   ["file_name"]=>
   string(62) "[Kamigami] Psycho-Pass - 06 [1280x720 x264 AAC Sub(CH,JP)].mkv"
   ["video_resolution"]=>
@@ -31,4 +31,6 @@ array(8) {
   string(8) "Kamigami"
   ["episode_title"]=>
   string(3) "mkv"
+  ["success"]=>
+  bool(true)
 }

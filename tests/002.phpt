@@ -17,7 +17,7 @@ $ret = anitomy_parse("[shirt] Pokemon Master Journeys S24E01 - To Train or Not t
 var_dump($ret);
 ?>
 --EXPECT--
-array(8) {
+array(9) {
   ["file_extension"]=>
   string(3) "mkv"
   ["file_name"]=>
@@ -34,8 +34,10 @@ array(8) {
   string(11) "Psycho-Pass"
   ["release_group"]=>
   string(8) "Kamigami"
+  ["success"]=>
+  bool(true)
 }
-array(6) {
+array(7) {
   ["file_name"]=>
   string(77) "[shirt] Pokemon Master Journeys S24E01 - To Train or Not to Train! (Teletoon)"
   ["anime_season"]=>
@@ -48,4 +50,6 @@ array(6) {
   string(5) "shirt"
   ["episode_title"]=>
   string(25) "To Train or Not to Train!"
+  ["success"]=>
+  bool(true)
 }

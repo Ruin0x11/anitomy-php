@@ -180,6 +180,7 @@ PHP_FUNCTION(anitomy_parse)
     size_t filename_len = 0;
     HashTable *options = NULL;
     HashTable *result = NULL;
+    zval zv;
 
     if (zend_parse_parameters(ZEND_NUM_ARGS(), "s|h", &filename, &filename_len, &options) == FAILURE) {
         RETURN_THROWS();
@@ -194,25 +195,28 @@ PHP_FUNCTION(anitomy_parse)
         parse_options(options, o);
     }
 
-    if (!anitomy.Parse(wide)) {
-        zend_throw_error(NULL, "Failed to parse filename");
-        RETURN_THROWS();
-    }
-
     ALLOC_HASHTABLE(result);
     zend_hash_init(result, 0, NULL, ZVAL_PTR_DTOR, 0);
+
+    if (!anitomy.Parse(wide)) {
+        ZVAL_FALSE(&zv);
+        zend_hash_str_add(result, ZEND_STRL("success"), &zv);
+        RETURN_ARR(result);
+    }
 
     for (const auto& element : anitomy.elements()) {
       const char* key = categoryToString(element.first);
       zend_string *keystr = zend_string_init(key, strlen(key), 0);
 
       char* mb = wstr2mb(element.second.c_str());
-      zval zv;
       ZVAL_STRING(&zv, mb);
       std::free(mb);
 
       zend_hash_update(result, keystr, &zv);
     }
+
+    ZVAL_TRUE(&zv);
+    zend_hash_str_add(result, ZEND_STRL("success"), &zv);
 
     RETURN_ARR(result);
 }

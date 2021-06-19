@@ -14,7 +14,7 @@ $ret = anitomy_parse("[shirt] Pokemon Master Journeys S24E01 - To Train or Not t
 var_dump($ret);
 ?>
 --EXPECT--
-array(5) {
+array(6) {
   ["file_name"]=>
   string(77) "[shirt] Pokemon Master Journeys S24E01 - To Train or Not to Train! (Teletoon)"
   ["anime_season"]=>
@@ -25,4 +25,6 @@ array(5) {
   string(23) "Pokemon Master Journeys"
   ["release_group"]=>
   string(5) "shirt"
+  ["success"]=>
+  bool(true)
 }
